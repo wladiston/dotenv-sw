@@ -1,0 +1,45 @@
+{
+  "name": "dotenv-sw",
+  "version": "0.0.0",
+  "bin": {
+    "dotenv": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./config": {
+      "import": "./dist/config.mjs",
+      "require": "./dist/config.js",
+      "types": "./dist/config.d.ts"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/*.ts --format esm,cjs --dts",
+    "dev": "tsup src/*.ts --format esm,cjs --watch --dts",
+    "lint": "eslint .",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "chalk": "4.1.2",
+    "dotenv": "^16.3.1",
+    "dotenv-expand": "^10.0.0",
+    "execa": "5.1.1",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.3",
+    "tsup": "^7.1.0",
+    "typescript": "4.9.5"
+  }
+}
